@@ -171,7 +171,7 @@ namespace UPC.PRUEBA.WEB.Controllers
             var cursosLst = await _context.Cursos.Where(x => x.Activo).AsNoTracking().ToListAsync();
             viewModel.Cursos = new SelectList(cursosLst.Select(x => new SelectListItem { Value = x.IdCurso.ToString(), Text = x.Nombre }).ToList());
 
-            if (dets.Any(d => d.IdCurso == viewModel.IdCurso || ))
+            if (dets.Any(d => d.IdCurso == viewModel.IdCurso))
             {
                 return View(viewModel);
             }
