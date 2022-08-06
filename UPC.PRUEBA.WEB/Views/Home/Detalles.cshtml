@@ -1,0 +1,51 @@
+﻿@using UPC.PRUEBA.WEB.ViewModels;
+@model SolicitudViewModel
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<h2>Solicitud #@Model.IdSolicitud</h2>
+
+
+<div class="my-2">
+    <a href="@Url.Action("Detalle", new { IdSolicitud = Model.IdSolicitud })" class="btn btn-block btn-primary">Agregar Detalle</a>
+</div>
+
+<h3>Resultados</h3>
+
+@if (Model.SolicitudDetalles.Any())
+{
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Curso</th>
+                <th>Créditos</th>
+                <th>Profesor</th>
+                <th>Sede</th>
+                <th>Aula</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.SolicitudDetalles)
+            {
+                <tr>
+                    <td>@item.IdDetalleSol</td>
+                    <td>@item.Curso</td>
+                    <td>@item.CursoCreditos</td>
+                    <td>@item.Profesor</td>
+                    <td>@item.Sede</td>
+                    <td>@item.Aula</td>
+                    <td>
+                        <a href="@Url.Action("Detalle", new { IdSolicitud = Model.IdSolicitud, IdSolDetalle = item.IdDetalleSol })" class="btn btn-info">Editar</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <h3>No cuenta con ningún detalle.</h3>
+}

@@ -1,0 +1,34 @@
+﻿@using UPC.PRUEBA.WEB.ViewModels;
+@model SolicitudViewModel
+@{
+    ViewBag.Title = "Solicitud";
+}
+
+<h2>Solicitud</h2>
+
+<form method="post">
+    @Html.HiddenFor(x => x.IdSolicitud)
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.CodRegistrante, new { @class = "label" })
+        @Html.TextBoxFor(x => x.CodRegistrante, new { @class = "form-control", placeholder = "Código Registrante", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Periodo, new { @class = "label" })
+        @Html.TextBoxFor(x => x.Periodo, new { @class = "form-control", placeholder = "Periodo", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Carrera, new { @class = "label" })
+        @Html.TextBoxFor(x => x.Carrera, new { @class = "form-control", placeholder = "Carrera", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.IdAlumno, new { @class = "label" })
+        @Html.DropDownListFor(x => x.IdAlumno, Model.Alumnos.Items as List<SelectListItem>, "Selecciona un alumno", new { @class = "form-control" })
+    </div>
+
+    <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
+

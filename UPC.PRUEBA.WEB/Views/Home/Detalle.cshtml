@@ -1,0 +1,40 @@
+﻿@using UPC.PRUEBA.WEB.ViewModels;
+@model SolicitudDetalleViewModel
+@{
+    ViewBag.Title = "Detalle";
+}
+
+<h2>Detalle</h2>
+
+<form method="post">
+    @Html.HiddenFor(x => x.IdDetalleSol)
+    @Html.HiddenFor(x => x.IdSolicitud)
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Profesor, new { @class = "label" })
+        @Html.TextBoxFor(x => x.Profesor, new { @class = "form-control", placeholder = "Profesor", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Aula, new { @class = "label" })
+        @Html.TextBoxFor(x => x.Aula, new { @class = "form-control", placeholder = "Aula", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Sede, new { @class = "label" })
+        @Html.TextBoxFor(x => x.Sede, new { @class = "form-control", placeholder = "Sede", required = "required", autocomplete = "off" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.IdCurso, new { @class = "label" })
+        @Html.DropDownListFor(x => x.IdCurso, Model.Cursos.Items as List<SelectListItem>, "Selecciona un curso", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(x => x.Observacion, new { @class = "label" })
+        @Html.TextAreaFor(x => x.Observacion, new { @class = "form-control", placeholder = "Observacion", required = "required", autocomplete = "off" })
+    </div>
+
+    <button class="btn btn-primary" type="submit">Guardar</button>
+</form>
+
